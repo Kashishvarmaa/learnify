@@ -12,9 +12,9 @@ ethnicity, and cultural views as I support diversity and understand that it is r
 ’s globalized world that tends to blur boundaries between different cultures. 
 Interestingly, people having different perspectives and backgrounds benefit my experience as I can learn.
 """
+doubt = "Who is last person to land on moon and why has moon landing stopped recently"
 
 openai.api_key = apiKey.API_KEY
-# openai.api_key = ""
 
 
 def openAISummariser(text: str):
@@ -23,10 +23,24 @@ def openAISummariser(text: str):
         messages=[
             {"role": "system",
              "content": f"You are the world's best AI Text Summariser, so summarise the content for me in bullet points"},
-            {"role": "user", "content": content},
+            {"role": "user", "content": text},
         ]
     )
     return response.choices[0].message.content
+
+
+def openAIDoubtSolver(text: str):
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        messages=[
+            {"role": "system",
+             "content": f"You are the job is to solve the doubts of students effectievely by providing as much as possible correct info"},
+            {"role": "user", "content": text},
+        ]
+    )
+    return response.choices[0].message.content
+
+
 
 
 

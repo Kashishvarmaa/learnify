@@ -12,16 +12,16 @@ class WebComponents:
         st.write("### Notes Summariser")
         text = st.text_area(label="label", label_visibility="hidden", height=350, max_chars=2500,
                             placeholder="Paste your text here to summarise it!!")
-        if st.button(label="SUMMARISE"):
+
+        if st.button("Summarise"):
             return text
         else:
-            return None
+            return "No text provided "
 
     @staticmethod
     def summaryProvider(summary="This is summary body"):
-        st.divider()
         st.write("#### Notes Summary")
-        sst.scrollableTextbox(summary, height=250)
+        sst.scrollableTextbox(summary, height=250, key="summaryProviderArea")
         st.divider()
 
     @staticmethod
@@ -29,14 +29,19 @@ class WebComponents:
         st.write("### Doubts Solver")
         doubtText = st.text_area(label="Get your doubts solved instantly!", height=100, max_chars=250,
                                  placeholder="Paste or type your doubt here")
-        highlights = st.multiselect(label="Topic related to",
-                                    options=["Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5"],
-                                    default=["Topic 1", "Topic 2"], placeholder="Click to select")
-        st.button(label="Solve my doubts")
-        st.divider()
+        if st.button(label="Solve my doubts"):
+            return doubtText
+        else:
+            return None
+
+    @staticmethod
+    def doubtSolutionArea(solution="Your solution will appear here"):
+        st.write("#### Doubt solution")
+        sst.scrollableTextbox(solution, height=250, key="doubtSolutionArea")
 
     @staticmethod
     def quizSection():
+        st.divider()
         st.write("### Quiz Section")
         st.write("#### Question 1")
         st.radio(label="What came first Chicken or Egg?", options=["Idk", "Idc", "Doesn't matter", "Dinosaurs"])
@@ -115,10 +120,15 @@ def main():
     # Call the WebComponents functions
     notes = WebComponents.promptSummariseArea()
     WebComponents.summaryProvider(notes)
-    WebComponents.doubtSolver()
+
+    doubtSolverValue = WebComponents.doubtSolver()
+    WebComponents.doubtSolutionArea()
+
     WebComponents.quizSection()
 
     note_input_form()
+    # print(doubtSolverValue)
+
 
 if __name__ == "__main__":
     main()
