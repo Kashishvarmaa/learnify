@@ -7,21 +7,21 @@ import streamlit_scrollable_textbox as sst
 class WebComponents:
 
     @staticmethod
-    def promptSummariseArea():
+    def promptSummariseArea() -> str:
         st.write("# :rainbow[Learnify]")
         st.write("### Notes Summariser")
         text = st.text_area(label="label", label_visibility="hidden", height=350, max_chars=2500,
                             placeholder="Paste your text here to summarise it!!")
-        st.button(label="Summarise")
-        st.divider()
-        return text
+        if st.button(label="SUMMARISE"):
+            return text
+        else:
+            return None
 
     @staticmethod
     def summaryProvider(summary="This is summary body"):
+        st.divider()
         st.write("#### Notes Summary")
-        st.text(summary)
-        sst.scrollableTextbox(summary, height=250, border=False)
-
+        sst.scrollableTextbox(summary, height=250)
         st.divider()
 
     @staticmethod
@@ -59,14 +59,24 @@ languages = {
 
 # Define a dictionary of note levels
 note_levels = {
+    "None": "none",
     "Beginner": "beginner",
+    "Intermediate": "intermediate",
     "Advanced": "advanced",
+    "Professional": "professional"
 }
 
 # Define a dictionary of note categories
 note_categories = {
+    "None": "none",
     "Music": "music",
     "Education": "education",
+    "Travel": "travel",
+    "Literature": "literature",
+    "Employment": "employment",
+    "Architecture": "architecture",
+    "Industry & Automation": "industry",
+    "Automobile": "automobile"
 }
 
 
@@ -89,12 +99,13 @@ def note_input_form():
             # Add more motivational messages as needed
         ]
         motivational_message = random.choice(motivational_messages)
-
+        error_label = ""
+        # Display error label
+        st.write(error_label)
         # Display the generated motivational message
         st.write(f"{motivational_message}")
 
-    # Button to generate notes
-    st.button(label="Generate Notes")
+    return [note_title, note_category, note_content, translation_language, note_level]
 
 
 # Define the Streamlit app
@@ -107,9 +118,7 @@ def main():
     WebComponents.doubtSolver()
     WebComponents.quizSection()
 
-    # Call the note_input_form function
     note_input_form()
-
 
 if __name__ == "__main__":
     main()
