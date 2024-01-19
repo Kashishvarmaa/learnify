@@ -1,7 +1,7 @@
 import openai
 from openai import OpenAI
 import os
-
+import apiKey
 
 content = """
 In my point of view, I tend to use the group approach more frequently rather than one-to-one communication.
@@ -13,8 +13,8 @@ ethnicity, and cultural views as I support diversity and understand that it is r
 Interestingly, people having different perspectives and backgrounds benefit my experience as I can learn.
 """
 
-# openai.api_key = os.environ["OPENAI_API_KEY"]
-openai.api_key = "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"
+openai.api_key = apiKey.API_KEY
+# openai.api_key = ""
 
 
 def openAISummariser(text: str):
