@@ -56,3 +56,4 @@ def openAINotesProvider(note_title, note_category, note_content, translation_lan
         ]
     )
     return response.choices[0].message.content
+

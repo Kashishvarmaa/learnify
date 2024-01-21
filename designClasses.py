@@ -3,8 +3,6 @@ import streamlit as st
 import streamlit_scrollable_textbox as sst
 import brain
 
-# from src.backend import brain
-
 
 # Define a dictionary of languages for translation
 languages = {
@@ -121,8 +119,6 @@ class WebComponents:
         return [note_title, note_category, note_content, translation_language, note_level]
 
 
-
-
 # Define the Streamlit app
 def main():
     st.title("SummNote")
@@ -137,7 +133,6 @@ def main():
     WebComponents.quizSection()
 
     note_input_form()
-    # print(doubtSolverValue)
 
 
 if __name__ == "__main__":
