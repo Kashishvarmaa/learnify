@@ -51,6 +51,10 @@ class WebComponents:
         st.button(label="Submit")
         st.divider()
 
+    @staticmethod
+    def notesArea(notes: str):
+        sst.scrollableTextbox(notes, height=250, key="notesArea")
+
 
 # Define a dictionary of languages for translation
 languages = {
@@ -111,6 +115,9 @@ def note_input_form():
         st.write(f"{motivational_message}")
 
     return [note_title, note_category, note_content, translation_language, note_level]
+
+
+
 
 
 # Define the Streamlit app
