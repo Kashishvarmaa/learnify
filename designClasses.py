@@ -1,7 +1,6 @@
 import random
 import streamlit as st
 import streamlit_scrollable_textbox as sst
-
 import brain
 
 # from src.backend import brain
@@ -51,7 +50,7 @@ class WebComponents:
 
         if st.button("Summarise"):
             summarisedText = brain.openAISummariser(text)
-            return sst.scrollableTextbox(summarisedText)
+            return sst.scrollableTextbox(summarisedText, height=200)
         else:
             return None
 
@@ -62,11 +61,9 @@ class WebComponents:
                                  placeholder="Paste or type your doubt here")
         if st.button(label="Solve my doubts"):
             doubtSolution = brain.openAIDoubtSolver(doubtText)
-            return sst.scrollableTextbox(doubtSolution)
+            return sst.scrollableTextbox(doubtSolution, height=200)
         else:
             return None
-
-
 
     @staticmethod
     def quizSection():
@@ -80,7 +77,6 @@ class WebComponents:
         st.button(label="Submit")
         st.divider()
 
-
     @staticmethod
     def generateNotes():
         st.subheader("Notes Generator")
@@ -92,7 +88,7 @@ class WebComponents:
 
         if st.button("Generate Notes"):
             generatedContent = brain.openAINotesProvider(note_title, note_category, note_content, translation_language, note_level)
-            return sst.scrollableTextbox(generatedContent)
+            return sst.scrollableTextbox(generatedContent, height=200)
         else:
             return None
 

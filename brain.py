@@ -15,7 +15,7 @@ Interestingly, people having different perspectives and backgrounds benefit my e
 doubt = "Who is last person to land on moon and why has moon landing stopped recently"
 
 openai.api_key = apiKey.API_KEY
-openAI_model = "gpt-3.5-turbo-1106"
+openAI_model = "gpt-3.5-turbo-16k"
 
 
 def openAISummariser(text: str):
